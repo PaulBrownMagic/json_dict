@@ -55,13 +55,13 @@
 		value_dict_backwards(Value, JSONValue).
 	json_dict_backwards({JSON}, Dict) :-
 		_Dict_::as_list(Dict, Pairs),
-		pairs_json_backwards(Pairs, [], JSONList),
-		JSON =.. [','|JSONList].
+		pairs_json_backwards(Pairs, JSON).
 
-	pairs_json_backwards([], JSON, JSON).
-	pairs_json_backwards([Key-Value|Tail], Acc, JSON) :-
+	pairs_json_backwards([Key-Value|[]], Key-JSONValue) :-
+		value_dict_backwards(Value, JSONValue).
+	pairs_json_backwards([Key-Value|Pairs], (Key-JSONValue, Rest)) :-
 		value_dict_backwards(Value, JSONValue),
-		pairs_json_backwards(Tail, [Key-JSONValue|Acc], JSON).
+		pairs_json_backwards(Pairs, Rest).
 
 	pairs_dict_forwards(Key-Value, Acc, Dict) :-
 		value_dict_forwards(Value, DictValue),

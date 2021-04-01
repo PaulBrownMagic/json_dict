@@ -37,8 +37,11 @@
 	test(backwards_only_one_pair, true(JSON == {a-b})) :-
 		_Dict_::as_dictionary([a-b], D),
 		json_dict(_Dict_)::json_dict(JSON, D).
-	test(backwards_two_pair, true(JSON == {c-d, a-b})) :-
+	test(backwards_two_pair, true(JSON == {a-b, c-d})) :-
 		_Dict_::as_dictionary([a-b, c-d], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_three_pairs, true(JSON == {a-b, c-d, e-f})) :-
+		_Dict_::as_dictionary([a-b, c-d, e-f], D),
 		json_dict(_Dict_)::json_dict(JSON, D).
 
 
