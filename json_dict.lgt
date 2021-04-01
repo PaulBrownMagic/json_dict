@@ -10,9 +10,6 @@
 			]
 	]).
 
-	new_dict(Dict) :-
-		_Dict_::as_dictionary([], Dict).
-
 	:- public(json_dict/2).
 	:- mode(json_dict(+term, ?term), one).
 	:- mode(json_dict(-term, +term), one).
@@ -22,23 +19,23 @@
 	]).
 	json_dict(_, _) :-
 		var(_Dict_), !,
-		fail.
+		fail.  % Should probably throw instead of failing
 	json_dict(JSON, Dict) :-
 		nonvar(JSON),
 		json_dict_forwards(JSON, Dict).
 	json_dict(JSON, Dict) :-
 		nonvar(Dict),
 		json_dict_backwards(JSON, Dict).
+
 	json_dict_forwards({}, Dict) :-
-		new_dict(Dict).
+		_Dict_::new(Dict).
 	json_dict_forwards({Key-Value}, Dict) :-  % Exceptional case for one pair
 		json_dict_forwards({','(Key-Value)}, Dict).
 	json_dict_forwards({JSON}, Dict) :-
 		JSON =.. [','|Pairs],
-		new_dict(Empty),
+		_Dict_::new(Empty),
 		pairs_dict(Pairs, Empty, Dict).
-	json_dict_forwards([], Dict) :-
-		new_dict(Dict).
+	json_dict_forwards([], []).
 	json_dict_forwards([H|T], Dict) :-
 		(	functor(H, '{}', 1)
 		->	meta::map(json_dict_forwards, [H|T], Dict)
@@ -63,9 +60,5 @@
 		atomic(Value), Value \= {}, !.
 	value_dict(Value, Dict) :-
 		json_dict_forwards(Value, Dict).
-
-
-
-
 
 :- end_object.
