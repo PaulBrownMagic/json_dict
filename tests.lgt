@@ -21,7 +21,8 @@
 		_Dict_::empty(Dict).
 
 	test(json_dict_empty_backwards, true(JSON == {} )) :-
-		json_dict(_Dict_)::json_dict(JSON, t).
+		_Dict_::new(Dict),
+		json_dict(_Dict_)::json_dict(JSON, Dict).
 
 	test(forwards_only_one_pair, true) :-
 		json_dict(_Dict_)::json_dict({a-b}, D),
