@@ -1,0 +1,21 @@
+{
+"@context": "http://schema.org",
+"@type": "Movie",
+"name": "Movie Name",
+"dateCreated": "17 May, 1980",
+"director": "Donald Trumph",
+"actors": ["ActorOne", "ActorTwo", "ActorThree"],
+"image": "http://example.com/image/movie.pgn",
+"countryOfOrigin": "America",
+"duration": "2:10:20",
+"musicBy": "Awesome Band",
+"productionCompany": "Awesome Movies inc.",
+"subtitleLanguage": "en, nb",
+"trailer": {
+"@type": "VideoObject",
+"name": "Official Trailer WAtW!",
+"description": "Trailer for the awesome new movieWigs Around the World!",
+"thumbnailUrl": "http://examples.com/thumbnail.png",
+"uploadDate": "10 May 1980"
+}
+}
