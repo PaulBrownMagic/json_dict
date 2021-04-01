@@ -30,6 +30,9 @@
 	test(forwards_two_pair, true) :-
 		json_dict(_Dict_)::json_dict({a-b, c-d}, D),
 		_Dict_::as_list(D, [a-b, c-d]).
+	test(forwards_three_pair, true) :-
+		json_dict(_Dict_)::json_dict({a-b, c-d, e-f}, D),
+		_Dict_::as_list(D, [a-b, c-d, e-f]).
 
 	test(backwards_only_one_pair, true(JSON == {a-b})) :-
 		_Dict_::as_dictionary([a-b], D),

@@ -6,5 +6,5 @@
 	]),
 	logtalk_load([
 		json_dict
-	]),
+	])
 )).

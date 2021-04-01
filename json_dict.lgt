@@ -32,9 +32,8 @@
 	json_dict_forwards({Key-Value}, Dict) :-  % Exceptional case for one pair
 		json_dict_forwards({','(Key-Value)}, Dict).
 	json_dict_forwards({JSON}, Dict) :-
-		JSON =.. [','|Pairs],
 		_Dict_::new(Empty),
-		pairs_dict_forwards(Pairs, Empty, Dict).
+		pairs_dict_forwards(JSON, Empty, Dict).
 	json_dict_forwards([], []).
 	json_dict_forwards([H|T], Dict) :-
 		(	functor(H, '{}', 1)
@@ -64,8 +63,10 @@
 		value_dict_backwards(Value, JSONValue),
 		pairs_json_backwards(Tail, [Key-JSONValue|Acc], JSON).
 
-	pairs_dict_forwards([], Acc, Acc).
-	pairs_dict_forwards([Key-Value|Pairs], Acc, Dict) :-
+	pairs_dict_forwards(Key-Value, Acc, Dict) :-
+		value_dict_forwards(Value, DictValue),
+		_Dict_::insert(Acc, Key, DictValue, Dict).
+	pairs_dict_forwards(','(Key-Value, Pairs), Acc, Dict) :-
 		value_dict_forwards(Value, DictValue),
 		_Dict_::insert(Acc, Key, DictValue, Updated),
 		pairs_dict_forwards(Pairs, Updated, Dict).
