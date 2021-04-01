@@ -34,7 +34,7 @@
 	json_dict_forwards({JSON}, Dict) :-
 		JSON =.. [','|Pairs],
 		_Dict_::new(Empty),
-		pairs_dict(Pairs, Empty, Dict).
+		pairs_dict_forwards(Pairs, Empty, Dict).
 	json_dict_forwards([], []).
 	json_dict_forwards([H|T], Dict) :-
 		(	functor(H, '{}', 1)
@@ -44,21 +44,40 @@
 
 	json_dict_backwards({}, Dict) :-
 		_Dict_::empty(Dict).
-	json_dict_backwards({Key-Value}, Dict) :-
-		_Dict_::as_list(Dict, [Key-Value]).
+	json_dict_backwards([], []).
+	json_dict_backwards([JSONHead|JSONTail], [DictHead|DictTail]) :-
+		(	_Dict_::valid(DictHead)
+		->  json_dict_backwards(JSONHead, DictHead)
+		;	JSONHead = DictHead
+		),
+		json_dict_backwards(JSONTail, DictTail).
+	json_dict_backwards({Key-JSONValue}, Dict) :-
+		_Dict_::as_list(Dict, [Key-Value]),
+		value_dict_backwards(Value, JSONValue).
 	json_dict_backwards({JSON}, Dict) :-
 		_Dict_::as_list(Dict, Pairs),
-		JSON =.. [','|Pairs].
+		pairs_json_backwards(Pairs, [], JSONList),
+		JSON =.. [','|JSONList].
 
-	pairs_dict([], Acc, Acc).
-	pairs_dict([Key-Value|Pairs], Acc, Dict) :-
-		value_dict(Value, DictValue),
+	pairs_json_backwards([], JSON, JSON).
+	pairs_json_backwards([Key-Value|Tail], Acc, JSON) :-
+		value_dict_backwards(Value, JSONValue),
+		pairs_json_backwards(Tail, [Key-JSONValue|Acc], JSON).
+
+	pairs_dict_forwards([], Acc, Acc).
+	pairs_dict_forwards([Key-Value|Pairs], Acc, Dict) :-
+		value_dict_forwards(Value, DictValue),
 		_Dict_::insert(Acc, Key, DictValue, Updated),
-		pairs_dict(Pairs, Updated, Dict).
+		pairs_dict_forwards(Pairs, Updated, Dict).
 
-	value_dict(Value, Value) :-
+	value_dict_forwards(Value, Value) :-
 		atomic(Value), Value \= {}, !.
-	value_dict(Value, Dict) :-
+	value_dict_forwards(Value, Dict) :-
 		json_dict_forwards(Value, Dict).
+
+	value_dict_backwards(Value, Value) :-
+		atomic(Value), \+ _Dict_::empty(Value), !.
+	value_dict_backwards(Value, JSONValue) :-
+		json_dict_backwards(JSONValue, Value).
 
 :- end_object.

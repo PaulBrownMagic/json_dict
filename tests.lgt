@@ -34,7 +34,7 @@
 	test(backwards_only_one_pair, true(JSON == {a-b})) :-
 		_Dict_::as_dictionary([a-b], D),
 		json_dict(_Dict_)::json_dict(JSON, D).
-	test(backwards_two_pair, true(JSON == {a-b, c-d})) :-
+	test(backwards_two_pair, true(JSON == {c-d, a-b})) :-
 		_Dict_::as_dictionary([a-b, c-d], D),
 		json_dict(_Dict_)::json_dict(JSON, D).
 
@@ -66,6 +66,31 @@
 		_Dict_::as_list(N2, [f-N3]),
 		_Dict_::as_list(N3, [g-h]).
 
-
+	test(backwards_contains_empty_list, true(JSON == {a-[]})) :-
+		_Dict_::as_dictionary([a-[]], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_contains_list, true(JSON == {a-[b, c]})) :-
+		_Dict_::as_dictionary([a-[b, c]], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_contains_empty_object, true(JSON == {a-{}})) :-
+		_Dict_::new(Nested),
+		_Dict_::as_dictionary([a-Nested], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_contains_object, true(JSON == {a-{b-c}})) :-
+		_Dict_::as_dictionary([b-c], Nested),
+		_Dict_::as_dictionary([a-Nested], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_contains_list_of_objects, true(JSON == {a-[{b-c}, {b-d}]})) :-
+		_Dict_::as_dictionary([b-c], Nested1),
+		_Dict_::as_dictionary([b-d], Nested2),
+		_Dict_::as_dictionary([a-[Nested1, Nested2]], D),
+		json_dict(_Dict_)::json_dict(JSON, D).
+	test(backwards_deeply_nested, true(JSON == [{a-b}, {c-[{d-[1, 2]}, {f-{g-h}}]}])) :-
+		_Dict_::as_dictionary([d-[1, 2]], N1),
+		_Dict_::as_dictionary([g-h], N3),
+		_Dict_::as_dictionary([f-N3], N2),
+		_Dict_::as_dictionary([a-b], D1),
+		_Dict_::as_dictionary([c-[N1, N2]], D2),
+		json_dict(_Dict_)::json_dict(JSON, [D1, D2]).
 
 :- end_object.
