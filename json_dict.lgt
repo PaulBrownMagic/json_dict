@@ -46,10 +46,7 @@
 		pairs_to_dict(JSON, Empty, Dict).
 	json_to_dict([], []).
 	json_to_dict([H|T], Dict) :-
-		(	functor(H, '{}', 1)
-		->	meta::map(json_to_dict, [H|T], Dict)
-		;	Dict = [H|T]
-		).
+		meta::map(json_to_dict, [H|T], Dict).
 
 	pairs_to_dict(Key-Value, Acc, Dict) :-
 		json_to_dict(Value, DictValue),

@@ -65,12 +65,13 @@
 		_Dict_::as_list(Nested1, [b-c]),
 		_Dict_::as_list(Nested2, [b-d]).
 	test(forwards_deeply_nested, deterministic) :-
-		_Dict_::as_dictionary([d-[1, 2]], N1),
+		_Dict_::new(Empty),
+		_Dict_::as_dictionary([d-[1, 2, Empty]], N1),
 		_Dict_::as_dictionary([g-h], N3),
 		_Dict_::as_dictionary([f-N3], N2),
 		_Dict_::as_dictionary([a-b], D1),
 		_Dict_::as_dictionary([c-[N1, N2]], D2),
-		json_dict(_Dict_)::json_dict([{a-b}, {c-[{d-[1, 2]}, {f-{g-h}}]}], Dict),
+		json_dict(_Dict_)::json_dict([{a-b}, {c-[{d-[1, 2, {}]}, {f-{g-h}}]}], Dict),
 		Dict = [D1, D2].
 
 	test(backwards_contains_empty_list, deterministic(JSON == {a-[]})) :-
@@ -92,8 +93,9 @@
 		_Dict_::as_dictionary([b-d], Nested2),
 		_Dict_::as_dictionary([a-[Nested1, Nested2]], D),
 		json_dict(_Dict_)::json_dict(JSON, D).
-	test(backwards_deeply_nested, deterministic(JSON == [{a-b}, {c-[{d-[1, 2]}, {f-{g-h}}]}])) :-
-		_Dict_::as_dictionary([d-[1, 2]], N1),
+	test(backwards_deeply_nested, deterministic(JSON == [{a-b}, {c-[{d-[1, 2, {}]}, {f-{g-h}}]}])) :-
+		_Dict_::new(Empty),
+		_Dict_::as_dictionary([d-[1, 2, Empty]], N1),
 		_Dict_::as_dictionary([g-h], N3),
 		_Dict_::as_dictionary([f-N3], N2),
 		_Dict_::as_dictionary([a-b], D1),
