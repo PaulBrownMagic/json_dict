@@ -1,6 +1,6 @@
 :- initialization((
 	set_logtalk_flag(report, warnings),
-	set_logtalk_flag(complements, allow),
+	set_logtalk_flag(complements, restrict),
 	logtalk_load([
 		dictionaries(loader),
 		json(loader),

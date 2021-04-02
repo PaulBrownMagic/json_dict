@@ -11,7 +11,7 @@
 	])
 )).
 
-:- if(current_logtalk_flag(complements, allow)).
+:- if( \+ current_logtalk_flag(complements, deny)).
 :- initialization((
 	logtalk_load([
 		complementary_nested_dict
