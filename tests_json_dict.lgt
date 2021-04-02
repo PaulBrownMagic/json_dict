@@ -1,4 +1,4 @@
-:- object(tests(_Dict_),
+:- object(tests_json_dict(_Dict_),
 	extends(lgtunit)).
 
 	:- info([

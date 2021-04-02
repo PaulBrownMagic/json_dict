@@ -11,3 +11,16 @@ So if we take the JSON term: `[{a-b}, {c-{d-e}}]`, we'll get a list of two
 dictionaries back: `[D1, D2]`, where `D1` is a dictionary with the key `a` and
 that key has the value `b`. `D2` has the key `c`, which has a value of another
 dictionary that contains the key-value mapping of `d` to `e`.
+
+## Nested Dictionary Queries
+
+Once a JSON term is converted to a dictionary, it may be a nested dictionary.
+The `nested_dictionary` object provides a couple of handy predicates that help
+with querying such a nested dictionary.
+
+So like we have `lookup/3`, we now also have `lookup_in/3`, which takes a list
+of keys to traverse in a lookup. For example `lookup_in([country, city, street], Number, Address)`.
+
+In a similar vein we have `update_in/4` and `update_in/5`, which first traverse the
+list of keys before updating the final value in that location, behaving like
+their `_in`less counterparts. For example `update_in(Address, [country, city, street], 7, NewAddress)`.

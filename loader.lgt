@@ -5,6 +5,7 @@
 		meta(loader)
 	]),
 	logtalk_load([
-		json_dict
+		json_dict,
+		nested_dict
 	])
 )).
