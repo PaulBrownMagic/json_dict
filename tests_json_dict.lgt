@@ -19,10 +19,14 @@
 	test(json_dict_empty_forwards, true) :-
 		json_dict(_Dict_)::json_dict({}, Dict),
 		_Dict_::empty(Dict).
+	test(json_dict_empty_list_forwards, true(Dict == [])) :-
+		json_dict(_Dict_)::json_dict([], Dict).
 
 	test(json_dict_empty_backwards, deterministic(JSON == {} )) :-
 		_Dict_::new(Dict),
 		json_dict(_Dict_)::json_dict(JSON, Dict).
+	test(json_dict_empty_list_backwards, true(JSON == [])) :-
+		json_dict(_Dict_)::json_dict(JSON, []).
 
 	test(forwards_only_one_pair, deterministic) :-
 		json_dict(_Dict_)::json_dict({a-b}, D),

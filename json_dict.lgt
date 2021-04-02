@@ -35,7 +35,7 @@
 		comment is 'Create a (nested) dictionary term from (nested) JSON terms',
 		argnames is ['JSON', 'Dict']
 	]).
-	json_to_dict(Value, Value) :-
+	json_to_dict(Value, Value) :-  % Both {} and [] are atomic
 		atomic(Value), Value \= {}, !.
 	json_to_dict({}, Dict) :-
 		_Dict_::new(Dict).
@@ -44,7 +44,6 @@
 	json_to_dict({JSON}, Dict) :-
 		_Dict_::new(Empty),
 		pairs_to_dict(JSON, Empty, Dict).
-	json_to_dict([], []).
 	json_to_dict([H|T], Dict) :-
 		meta::map(json_to_dict, [H|T], Dict).
 
@@ -63,11 +62,10 @@
 		comment is 'Create a JSON term from (nested) dictionaries',
 		argnames is ['Dict', 'JSON']
 	]).
-	dict_to_json(Value, Value) :-
+	dict_to_json(Value, Value) :-  % Both {} and [] are atomic
 		atomic(Value), \+ _Dict_::empty(Value), !.
 	dict_to_json(Dict, {}) :-
 		_Dict_::empty(Dict), !.
-	dict_to_json([], []).
 	dict_to_json([DictHead|DictTail], [JSONHead|JSONTail]) :-
 		(	_Dict_::valid(DictHead)
 		->  dict_to_json(DictHead, JSONHead)
