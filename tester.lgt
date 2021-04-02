@@ -9,6 +9,8 @@
 	logtalk_load(lgtunit(loader)),
 	logtalk_load([
 		json_dict,
+		nested_dict_category,
+		complementary_nested_dict,
 		nested_dict
 	], [
 		source_data(on),
