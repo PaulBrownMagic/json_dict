@@ -1,4 +1,5 @@
-:- object(nested_dict(_Dict_)).
+:- category(nested_dict,
+    complements([avltree, bintree, rbtree])).
 
 	:- info([
 		version is 1:0:0,
@@ -15,7 +16,7 @@
 	]).
 	lookup_in([], Dict, Dict).
 	lookup_in([Key|Keys], Ans, Dict) :-
-		_Dict_::lookup(Key, Value, Dict),
+		::lookup(Key, Value, Dict),
 		lookup_in(Keys, Ans, Value).
 
 	:- public(update_in/4).
@@ -26,9 +27,9 @@
 	]).
 	update_in(_, [], Value, Value) :- !.
 	update_in(OldDict, [Key|Keys], Value, NewDict) :-
-		_Dict_::lookup(Key, SubDict, OldDict),
+		::lookup(Key, SubDict, OldDict),
 		update_in(SubDict, Keys, Value, NewSubDict),
-		_Dict_::update(OldDict, Key, NewSubDict, NewDict).
+		::update(OldDict, Key, NewSubDict, NewDict).
 
 	:- public(update_in/5).
 	:- mode(update_in(++term, ++list, ++any, ++any, --term), zero_or_one).
@@ -37,10 +38,10 @@
 		argnames is ['OldDictionaly', 'List of Keys', 'OldValue', 'NewValue', 'NewDictionary']
 	]).
 	update_in(OldDict, [LastKey|[]], OldValue, NewValue, NewDict) :-
-		_Dict_::update(OldDict, LastKey, OldValue, NewValue, NewDict), !.
+		::update(OldDict, LastKey, OldValue, NewValue, NewDict), !.
 	update_in(OldDict, [Key|Keys], OldValue, NewValue, NewDict) :-
-		_Dict_::lookup(Key, SubDict, OldDict),
+		::lookup(Key, SubDict, OldDict),
 		update_in(SubDict, Keys, OldValue, NewValue, NewSubDict),
-		_Dict_::update(OldDict, Key, NewSubDict, NewDict).
+		::update(OldDict, Key, NewSubDict, NewDict).
 
-:- end_object.
+:- end_category.
