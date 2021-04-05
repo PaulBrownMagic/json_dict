@@ -29,7 +29,6 @@
 		;	instantiation_error
 		).
 
-	% From a JSON Term to a Dict
 	:- private(json_to_dict/2).
 	:- mode(json_to_dict(++term, -term), one).
 	:- info(json_to_dict/2, [
@@ -37,11 +36,9 @@
 		argnames is ['JSON', 'Dict']
 	]).
 	json_to_dict(Value, Value) :-  % Both {} and [] are atomic
-		atomic(Value), Value \= {}, !.
+		atomic(Value), Value \== {}, !.
 	json_to_dict({}, Dict) :-
 		_Dict_::new(Dict).
-	json_to_dict({Key-Value}, Dict) :-  % Exceptional case for one pair
-		json_to_dict({','(Key-Value)}, Dict).
 	json_to_dict({JSON}, Dict) :-
 		_Dict_::new(Empty),
 		pairs_to_dict(JSON, Empty, Dict).
@@ -56,7 +53,6 @@
 		_Dict_::insert(Acc, Key, DictValue, Updated),
 		pairs_to_dict(Pairs, Updated, Dict).
 
-	% From a Dict to a JSON term
 	:- private(dict_to_json/2).
 	:- mode(dict_to_json(++term, -term), one).
 	:- info(dict_to_json/2, [
