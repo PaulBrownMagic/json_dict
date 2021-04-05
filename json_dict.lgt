@@ -53,9 +53,6 @@
 			instantiation_error
 		;	var(Dict)	->
 			instantiation_error
-		% _Dict_::check/1 throws for empty
-		;	_Dict_::empty(Dict) ->
-			JSON = {}
 		;	_Dict_::check(Dict),
 			dict_to_json_(Dict, JSON)
 		).
