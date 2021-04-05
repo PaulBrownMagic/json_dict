@@ -4,7 +4,7 @@
 	:- info([
 		version is 1:0:0,
 		author is 'Paul Brown',
-		date is 2021-04-01,
+		date is 2021-04-05,
 		comment is 'Unit tests for json_dict'
 	]).
 
@@ -13,7 +13,7 @@
 	test(json_dict_no_dict_fail, error(instantiation_error)) :-
 		json_dict(_Var)::json_dict({}, _Dict).
 
-	test(json_dict_vars_fail, fail) :-
+	test(json_dict_vars_fail, error(instantiation_error)) :-
 		json_dict(_Dict_)::json_dict(_JSON, _Dict).
 
 	test(json_dict_empty_forwards, true) :-

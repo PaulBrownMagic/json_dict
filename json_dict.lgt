@@ -3,29 +3,30 @@
 	:- info([
 		version is 1:0:0,
 		author is 'Paul Brown',
-		date is 2021-04-01,
+		date is 2021-04-05,
 		comment is 'JSON objects and Dictionaries translation',
 		parameters is [
 			'Dictionary' - 'The Dictionary Implementation to use (must implement dictionaryp and extend compound)'
-			]
+		]
 	]).
 
 	:- public(json_dict/2).
-	:- mode(json_dict(+term, -term), one).
-	:- mode(json_dict(-term, +term), one).
+	:- mode(json_dict(+term, -dictionary), one_or_error).
+	:- mode(json_dict(-term, +dictionary), one_or_error).
 	:- info(json_dict/2, [
 		comment is 'JSON term is equivalent to Dictionary term',
 		argnames is ['JSON', 'Dictionary']
 	]).
 	% Guards
 	json_dict(_, _) :-
-		var(_Dict_), !,
+		var(_Dict_),
 		instantiation_error.
 	json_dict(JSON, Dict) :-
-		(	nonvar(Dict)
-		->	dict_to_json(Dict, JSON)
-		;	nonvar(JSON),
+		(	nonvar(Dict) ->
+			dict_to_json(Dict, JSON)
+		;	nonvar(JSON) ->
 			json_to_dict(JSON, Dict)
+		;	instantiation_error
 		).
 
 	% From a JSON Term to a Dict
