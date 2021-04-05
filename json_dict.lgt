@@ -11,16 +11,19 @@
 	]).
 
 	:- public(json_to_dict/2).
-	:- mode(json_to_dict(++term, -nested_dictionary), one).
+	:- mode(json_to_dict(++term, --nested_dictionary), one_or_error).
 	:- info(json_to_dict/2, [
 		comment is 'Create a (nested) dictionary term from (nested) JSON terms',
 		argnames is ['JSON', 'NestedDictionary']
 	]).
+
 	json_to_dict(JSON, Dict) :-
 		(	var(_Dict_)	->
 			instantiation_error
 		;	var(JSON)	->
 			instantiation_error
+		;	nonvar(Dict) ->
+			uninstantiation_error(Dict)
 		;	functor(JSON, '{}', Arity), Arity =< 1 ->
 			json_to_dict_(JSON, Dict)
 		;	type_error(json_object, JSON)
@@ -44,16 +47,19 @@
 		pairs_to_dict(Pairs, Updated, Dict).
 
 	:- public(dict_to_json/2).
-	:- mode(dict_to_json(++nested_dictionary, -term), one).
+	:- mode(dict_to_json(++nested_dictionary, --term), one_or_error).
 	:- info(dict_to_json/2, [
 		comment is 'Create a JSON term from (nested) dictionaries',
 		argnames is ['NestedDictionary', 'JSON']
 	]).
+
 	dict_to_json(Dict, JSON) :-
 		(	var(_Dict_)	->
 			instantiation_error
 		;	var(Dict)	->
 			instantiation_error
+		;	nonvar(JSON) ->
+			uninstantiation_error(JSON)
 		;	_Dict_::check(Dict),
 			dict_to_json_(Dict, JSON)
 		).

@@ -10,17 +10,23 @@
 
 	cover(json_dict(_)).
 
-	test(json_to_dict_no_dict_fail, error(instantiation_error)) :-
+	test(json_to_dict_no_dict_error, error(instantiation_error)) :-
 		json_dict(_Var)::json_to_dict({}, _Dict).
-	test(dict_to_json_no_dict_fail, error(instantiation_error)) :-
+	test(dict_to_json_no_dict_error, error(instantiation_error)) :-
 		_Dict_::new(Dict),
 		json_dict(_Var)::dict_to_json(Dict, _JSON).
 
-	test(json_to_dict_var_fail, error(instantiation_error)) :-
+	test(json_to_dict_var_error, error(instantiation_error)) :-
 		_Dict_::new(Dict),
 		json_dict(_Dict_)::json_to_dict(_JSON, Dict).
-	test(dict_to_json_var_fail, error(instantiation_error)) :-
+	test(dict_to_json_var_error, error(instantiation_error)) :-
 		json_dict(_Dict_)::dict_to_json(_Dict, {}).
+
+	test(json_to_dict_nonvar_error, error(uninstantiation_error(1))) :-
+		json_dict(_Dict_)::json_to_dict({}, 1).
+	test(dict_to_json_nonvar_error, error(uninstantiation_error({}))) :-
+		_Dict_::new(Dict),
+		json_dict(_Dict_)::dict_to_json(Dict, {}).
 
 	test(json_dict_empty_forwards, true) :-
 		json_dict(_Dict_)::json_to_dict({}, Dict),
