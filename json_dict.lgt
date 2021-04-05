@@ -70,13 +70,13 @@
 		), !,
 		dict_to_json(DictTail, JSONTail).
 	dict_to_json(Dict, {JSON}) :-
-		_Dict_::as_list(Dict, Pairs),
-		pairs_to_json(Pairs, JSON).
+		_Dict_::as_list(Dict, [Pair| Pairs]),
+		pairs_to_json(Pairs, Pair, JSON).
 
-	pairs_to_json([Key-Value|[]], Key-JSONValue) :-
-		dict_to_json(Value, JSONValue), !.
-	pairs_to_json([Key-Value|Pairs], (Key-JSONValue, Rest)) :-
+	pairs_to_json([], Key-Value, Key-JSONValue) :-
+		dict_to_json(Value, JSONValue).
+	pairs_to_json([Pair| Pairs], Key-Value, (Key-JSONValue, Rest)) :-
 		dict_to_json(Value, JSONValue),
-		pairs_to_json(Pairs, Rest).
+		pairs_to_json(Pairs, Pair, Rest).
 
 :- end_object.
