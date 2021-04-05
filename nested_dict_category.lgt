@@ -35,6 +35,9 @@
 		argnames is ['OldDictionary', 'Keys', 'OldValue', 'NewValue', 'NewDictionary']
 	]).
 
+	update_in(OldDict, [], OldValue, NewValue, NewValue) :-
+		!,
+		OldValue = OldDict.
 	update_in(OldDict, [Key|Keys], OldValue, NewValue, NewDict) :-
 		update_in(Keys, OldDict, Key, OldValue, NewValue, NewDict).
 
