@@ -69,9 +69,6 @@
 		;	JSONHead = DictHead
 		), !,
 		dict_to_json(DictTail, JSONTail).
-	dict_to_json(Dict, {Key-JSONValue}) :-
-		_Dict_::as_list(Dict, [Key-Value]), !,
-		dict_to_json(Value, JSONValue).
 	dict_to_json(Dict, {JSON}) :-
 		_Dict_::as_list(Dict, Pairs),
 		pairs_to_json(Pairs, JSON).
