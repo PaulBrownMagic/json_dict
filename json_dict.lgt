@@ -6,7 +6,7 @@
 		date is 2021-04-05,
 		comment is 'JSON objects and Nested Dictionaries translation',
 		parameters is [
-			'Dictionary' - 'The Dictionary Implementation to use (must implement dictionaryp and extend compound)'
+			'Dictionary' - 'The Dictionary implementation to use (must implement ``dictionaryp`` and extend ``term``).'
 		]
 	]).
 
@@ -14,15 +14,16 @@
 	:- mode(json_to_dict(++term, -nested_dictionary), one).
 	:- info(json_to_dict/2, [
 		comment is 'Create a (nested) dictionary term from (nested) JSON terms',
-		argnames is ['JSON', 'Nested_Dictionary']
+		argnames is ['JSON', 'NestedDictionary']
 	]).
 	json_to_dict(JSON, Dict) :-
 		(	var(_Dict_)	->
 			instantiation_error
 		;	var(JSON)	->
 			instantiation_error
-		;	functor(JSON, '{}', _),
+		;	functor(JSON, '{}', Arity), Arity =< 1 ->
 			json_to_dict_(JSON, Dict)
+		;	type_error(json_object, JSON)
 		).
 	json_to_dict_(Value, Value) :-  % Both {} and [] are atomic
 		atomic(Value), Value \== {}, !.
@@ -46,7 +47,7 @@
 	:- mode(dict_to_json(++nested_dictionary, -term), one).
 	:- info(dict_to_json/2, [
 		comment is 'Create a JSON term from (nested) dictionaries',
-		argnames is ['Nested_Dictionary', 'JSON']
+		argnames is ['NestedDictionary', 'JSON']
 	]).
 	dict_to_json(Dict, JSON) :-
 		(	var(_Dict_)	->
