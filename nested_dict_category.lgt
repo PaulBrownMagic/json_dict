@@ -24,11 +24,9 @@
 		comment is 'Update the value found by traversing through the nested keys',
 		argnames is ['OldDictionary', 'Keys', 'Value', 'NewDictionary']
 	]).
-	update_in(_, [], Value, Value) :- !.
-	update_in(OldDict, [Key|Keys], Value, NewDict) :-
-		::lookup(Key, SubDict, OldDict),
-		update_in(SubDict, Keys, Value, NewSubDict),
-		::update(OldDict, Key, NewSubDict, NewDict).
+
+	update_in(SubDict, Keys, Value, NewSubDict) :-
+		update_in(SubDict, Keys, _, Value, NewSubDict).
 
 	:- public(update_in/5).
 	:- mode(update_in(++term, ++list, ++term, ++term, --term), zero_or_one).
