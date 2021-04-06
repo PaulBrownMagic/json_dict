@@ -4,8 +4,10 @@ A library for converting between a JSON term (`{a-b, c-[1, 2, 3], d-[{1-a, 2-a},
 to one of the dictionary implementations. This will hopefully make both
 querying and building JSON terms simpler.
 
-![Workflow Status](https://github.com/PaulBrownMagic/json_dict/actions/workflows/main.yml/badge.svg)
-[Code Coverage Report](https://paulbrownmagic.github.io/json_dict/coverage_report.html)
+### Status
+- ![Workflow Status](https://github.com/PaulBrownMagic/json_dict/actions/workflows/main.yml/badge.svg)
+- [Testing Report](https://paulbrownmagic.github.io/json_dict/tap_report.txt)
+- [Code Coverage Report](https://paulbrownmagic.github.io/json_dict/coverage_report.html)
 
 ## JSON to Dictionary mapping
 
