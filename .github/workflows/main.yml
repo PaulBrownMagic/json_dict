@@ -29,14 +29,16 @@ jobs:
       - name: Install Logtalk
         uses: logtalk-actions/setup-logtalk@master
         with:
-          logtalk-version: latest
+          logtalk-version: git
       - name: Checkout Logtalk application to be tested
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
+      - name: Define environment variable for the test results
+        run: echo "EXIT=0" >> $GITHUB_ENV
       - name: Run the application tests
         run: |
-          logtalk_tester -f tap -c xml || true
+          logtalk_tester -f tap -c xml || EXIT=$?
           xsltproc --stringparam prefix work/$(basename $GITHUB_REPOSITORY)/$(basename $GITHUB_REPOSITORY)/ --stringparam url https://github.com/$GITHUB_REPOSITORY/tree/$GITHUB_SHA -o coverage_report.html coverage_report.xml
       - name: Upload TAP report
         uses: actions/upload-artifact@master
@@ -83,3 +85,5 @@ jobs:
         with:
           name: diagrams
           path: diagrams.zip
+      - name: Set workflow exit status after the test results
+        run: exit $EXIT
