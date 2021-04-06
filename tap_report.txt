@@ -1,0 +1,224 @@
+TAP version 13
+1..29
+ok 1 - json_to_dict_no_dict_error @ tests_json_dict(avltree)
+ok 2 - dict_to_json_no_dict_error @ tests_json_dict(avltree)
+ok 3 - json_to_dict_var_error @ tests_json_dict(avltree)
+ok 4 - dict_to_json_var_error @ tests_json_dict(avltree)
+ok 5 - json_to_dict_nonvar_error @ tests_json_dict(avltree)
+ok 6 - dict_to_json_nonvar_error @ tests_json_dict(avltree)
+ok 7 - json_dict_empty_forwards @ tests_json_dict(avltree)
+ok 8 - json_dict_empty_list_forwards @ tests_json_dict(avltree)
+not ok 9 - json_dict_empty_backwards @ tests_json_dict(avltree)
+  ---
+  message: "test goal throws an error but should have succeeded"
+  got: error(type_error(compound,t),logtalk(check(t),c(compound,compound,r(json_dict(avltree),avltree,[],[]))))
+  ...
+ok 10 - json_dict_empty_list_backwards @ tests_json_dict(avltree)
+ok 11 - forwards_only_one_pair @ tests_json_dict(avltree)
+ok 12 - forwards_two_pair @ tests_json_dict(avltree)
+ok 13 - forwards_three_pair @ tests_json_dict(avltree)
+ok 14 - backwards_only_one_pair @ tests_json_dict(avltree)
+ok 15 - backwards_two_pair @ tests_json_dict(avltree)
+ok 16 - backwards_three_pairs @ tests_json_dict(avltree)
+ok 17 - forwards_contains_empty_list @ tests_json_dict(avltree)
+ok 18 - forwards_contains_list @ tests_json_dict(avltree)
+ok 19 - forwards_contains_empty_object @ tests_json_dict(avltree)
+ok 20 - forwards_contains_object @ tests_json_dict(avltree)
+ok 21 - forwards_contains_list_of_objects @ tests_json_dict(avltree)
+ok 22 - forwards_deeply_nested @ tests_json_dict(avltree)
+ok 23 - backwards_dict_contains_var_value @ tests_json_dict(avltree)
+ok 24 - backwards_contains_empty_list @ tests_json_dict(avltree)
+ok 25 - backwards_contains_list @ tests_json_dict(avltree)
+ok 26 - backwards_contains_empty_object @ tests_json_dict(avltree)
+ok 27 - backwards_contains_object @ tests_json_dict(avltree)
+ok 28 - backwards_contains_list_of_objects @ tests_json_dict(avltree)
+ok 29 - backwards_deeply_nested @ tests_json_dict(avltree)
+1..29
+ok 30 - json_to_dict_no_dict_error @ tests_json_dict(bintree)
+ok 31 - dict_to_json_no_dict_error @ tests_json_dict(bintree)
+ok 32 - json_to_dict_var_error @ tests_json_dict(bintree)
+ok 33 - dict_to_json_var_error @ tests_json_dict(bintree)
+ok 34 - json_to_dict_nonvar_error @ tests_json_dict(bintree)
+ok 35 - dict_to_json_nonvar_error @ tests_json_dict(bintree)
+ok 36 - json_dict_empty_forwards @ tests_json_dict(bintree)
+ok 37 - json_dict_empty_list_forwards @ tests_json_dict(bintree)
+not ok 38 - json_dict_empty_backwards @ tests_json_dict(bintree)
+  ---
+  message: "test goal throws an error but should have succeeded"
+  got: error(type_error(compound,t),logtalk(check(t),c(compound,compound,r(json_dict(bintree),bintree,[],[]))))
+  ...
+ok 39 - json_dict_empty_list_backwards @ tests_json_dict(bintree)
+ok 40 - forwards_only_one_pair @ tests_json_dict(bintree)
+ok 41 - forwards_two_pair @ tests_json_dict(bintree)
+ok 42 - forwards_three_pair @ tests_json_dict(bintree)
+ok 43 - backwards_only_one_pair @ tests_json_dict(bintree)
+ok 44 - backwards_two_pair @ tests_json_dict(bintree)
+ok 45 - backwards_three_pairs @ tests_json_dict(bintree)
+ok 46 - forwards_contains_empty_list @ tests_json_dict(bintree)
+ok 47 - forwards_contains_list @ tests_json_dict(bintree)
+ok 48 - forwards_contains_empty_object @ tests_json_dict(bintree)
+ok 49 - forwards_contains_object @ tests_json_dict(bintree)
+ok 50 - forwards_contains_list_of_objects @ tests_json_dict(bintree)
+ok 51 - forwards_deeply_nested @ tests_json_dict(bintree)
+ok 52 - backwards_dict_contains_var_value @ tests_json_dict(bintree)
+ok 53 - backwards_contains_empty_list @ tests_json_dict(bintree)
+ok 54 - backwards_contains_list @ tests_json_dict(bintree)
+ok 55 - backwards_contains_empty_object @ tests_json_dict(bintree)
+ok 56 - backwards_contains_object @ tests_json_dict(bintree)
+ok 57 - backwards_contains_list_of_objects @ tests_json_dict(bintree)
+ok 58 - backwards_deeply_nested @ tests_json_dict(bintree)
+1..29
+ok 59 - json_to_dict_no_dict_error @ tests_json_dict(rbtree)
+ok 60 - dict_to_json_no_dict_error @ tests_json_dict(rbtree)
+ok 61 - json_to_dict_var_error @ tests_json_dict(rbtree)
+ok 62 - dict_to_json_var_error @ tests_json_dict(rbtree)
+ok 63 - json_to_dict_nonvar_error @ tests_json_dict(rbtree)
+ok 64 - dict_to_json_nonvar_error @ tests_json_dict(rbtree)
+ok 65 - json_dict_empty_forwards @ tests_json_dict(rbtree)
+ok 66 - json_dict_empty_list_forwards @ tests_json_dict(rbtree)
+not ok 67 - json_dict_empty_backwards @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+ok 68 - json_dict_empty_list_backwards @ tests_json_dict(rbtree)
+ok 69 - forwards_only_one_pair @ tests_json_dict(rbtree)
+ok 70 - forwards_two_pair @ tests_json_dict(rbtree)
+ok 71 - forwards_three_pair @ tests_json_dict(rbtree)
+not ok 72 - backwards_only_one_pair @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 73 - backwards_two_pair @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 74 - backwards_three_pairs @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+ok 75 - forwards_contains_empty_list @ tests_json_dict(rbtree)
+ok 76 - forwards_contains_list @ tests_json_dict(rbtree)
+ok 77 - forwards_contains_empty_object @ tests_json_dict(rbtree)
+ok 78 - forwards_contains_object @ tests_json_dict(rbtree)
+ok 79 - forwards_contains_list_of_objects @ tests_json_dict(rbtree)
+ok 80 - forwards_deeply_nested @ tests_json_dict(rbtree)
+not ok 81 - backwards_dict_contains_var_value @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have throw an error"
+  expected: error(instantiation_error,A)
+  ...
+not ok 82 - backwards_contains_empty_list @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 83 - backwards_contains_list @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 84 - backwards_contains_empty_object @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 85 - backwards_contains_object @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 86 - backwards_contains_list_of_objects @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+not ok 87 - backwards_deeply_nested @ tests_json_dict(rbtree)
+  ---
+  message: "test goal failed but should have succeeded"
+  ...
+1..28
+ok 88 - lookup_in_empty_reflexive @ tests_nested_dict(avltree)
+ok 89 - lookup_depth_one @ tests_nested_dict(avltree)
+ok 90 - lookup_depth_two @ tests_nested_dict(avltree)
+ok 91 - lookup_is_list @ tests_nested_dict(avltree)
+ok 92 - lookup_across_list @ tests_nested_dict(avltree)
+ok 93 - lookup_through_list @ tests_nested_dict(avltree)
+ok 94 - lookup_through_nondict @ tests_nested_dict(avltree)
+ok 95 - update_in_empty_keys_is_value @ tests_nested_dict(avltree)
+ok 96 - update_depth_one @ tests_nested_dict(avltree)
+ok 97 - update_depth_two @ tests_nested_dict(avltree)
+ok 98 - update_a_list @ tests_nested_dict(avltree)
+ok 99 - update_through_nondict @ tests_nested_dict(avltree)
+ok 100 - update_5_nested_matching @ tests_nested_dict(avltree)
+ok 101 - update_5_nested_not_matching @ tests_nested_dict(avltree)
+ok 102 - obj_lookup_in_empty_reflexive @ tests_nested_dict(avltree)
+ok 103 - obj_lookup_depth_one @ tests_nested_dict(avltree)
+ok 104 - obj_lookup_depth_two @ tests_nested_dict(avltree)
+ok 105 - obj_lookup_is_list @ tests_nested_dict(avltree)
+ok 106 - obj_lookup_across_list @ tests_nested_dict(avltree)
+ok 107 - obj_lookup_through_list @ tests_nested_dict(avltree)
+ok 108 - obj_lookup_through_nondict @ tests_nested_dict(avltree)
+ok 109 - obj_update_in_empty_keys_is_value @ tests_nested_dict(avltree)
+ok 110 - obj_update_depth_one @ tests_nested_dict(avltree)
+ok 111 - obj_update_depth_two @ tests_nested_dict(avltree)
+ok 112 - obj_update_a_list @ tests_nested_dict(avltree)
+ok 113 - obj_update_through_nondict @ tests_nested_dict(avltree)
+ok 114 - obj_update_5_nested_matching @ tests_nested_dict(avltree)
+ok 115 - obj_update_5_nested_not_matching @ tests_nested_dict(avltree)
+1..28
+ok 116 - lookup_in_empty_reflexive @ tests_nested_dict(bintree)
+ok 117 - lookup_depth_one @ tests_nested_dict(bintree)
+ok 118 - lookup_depth_two @ tests_nested_dict(bintree)
+ok 119 - lookup_is_list @ tests_nested_dict(bintree)
+ok 120 - lookup_across_list @ tests_nested_dict(bintree)
+ok 121 - lookup_through_list @ tests_nested_dict(bintree)
+ok 122 - lookup_through_nondict @ tests_nested_dict(bintree)
+ok 123 - update_in_empty_keys_is_value @ tests_nested_dict(bintree)
+ok 124 - update_depth_one @ tests_nested_dict(bintree)
+ok 125 - update_depth_two @ tests_nested_dict(bintree)
+ok 126 - update_a_list @ tests_nested_dict(bintree)
+ok 127 - update_through_nondict @ tests_nested_dict(bintree)
+ok 128 - update_5_nested_matching @ tests_nested_dict(bintree)
+ok 129 - update_5_nested_not_matching @ tests_nested_dict(bintree)
+ok 130 - obj_lookup_in_empty_reflexive @ tests_nested_dict(bintree)
+ok 131 - obj_lookup_depth_one @ tests_nested_dict(bintree)
+ok 132 - obj_lookup_depth_two @ tests_nested_dict(bintree)
+ok 133 - obj_lookup_is_list @ tests_nested_dict(bintree)
+ok 134 - obj_lookup_across_list @ tests_nested_dict(bintree)
+ok 135 - obj_lookup_through_list @ tests_nested_dict(bintree)
+ok 136 - obj_lookup_through_nondict @ tests_nested_dict(bintree)
+ok 137 - obj_update_in_empty_keys_is_value @ tests_nested_dict(bintree)
+ok 138 - obj_update_depth_one @ tests_nested_dict(bintree)
+ok 139 - obj_update_depth_two @ tests_nested_dict(bintree)
+ok 140 - obj_update_a_list @ tests_nested_dict(bintree)
+ok 141 - obj_update_through_nondict @ tests_nested_dict(bintree)
+ok 142 - obj_update_5_nested_matching @ tests_nested_dict(bintree)
+ok 143 - obj_update_5_nested_not_matching @ tests_nested_dict(bintree)
+1..28
+ok 144 - lookup_in_empty_reflexive @ tests_nested_dict(rbtree)
+ok 145 - lookup_depth_one @ tests_nested_dict(rbtree)
+ok 146 - lookup_depth_two @ tests_nested_dict(rbtree)
+ok 147 - lookup_is_list @ tests_nested_dict(rbtree)
+ok 148 - lookup_across_list @ tests_nested_dict(rbtree)
+ok 149 - lookup_through_list @ tests_nested_dict(rbtree)
+ok 150 - lookup_through_nondict @ tests_nested_dict(rbtree)
+ok 151 - update_in_empty_keys_is_value @ tests_nested_dict(rbtree)
+ok 152 - update_depth_one @ tests_nested_dict(rbtree)
+ok 153 - update_depth_two @ tests_nested_dict(rbtree)
+ok 154 - update_a_list @ tests_nested_dict(rbtree)
+ok 155 - update_through_nondict @ tests_nested_dict(rbtree)
+ok 156 - update_5_nested_matching @ tests_nested_dict(rbtree)
+ok 157 - update_5_nested_not_matching @ tests_nested_dict(rbtree)
+ok 158 - obj_lookup_in_empty_reflexive @ tests_nested_dict(rbtree)
+ok 159 - obj_lookup_depth_one @ tests_nested_dict(rbtree)
+ok 160 - obj_lookup_depth_two @ tests_nested_dict(rbtree)
+ok 161 - obj_lookup_is_list @ tests_nested_dict(rbtree)
+ok 162 - obj_lookup_across_list @ tests_nested_dict(rbtree)
+ok 163 - obj_lookup_through_list @ tests_nested_dict(rbtree)
+ok 164 - obj_lookup_through_nondict @ tests_nested_dict(rbtree)
+ok 165 - obj_update_in_empty_keys_is_value @ tests_nested_dict(rbtree)
+ok 166 - obj_update_depth_one @ tests_nested_dict(rbtree)
+ok 167 - obj_update_depth_two @ tests_nested_dict(rbtree)
+ok 168 - obj_update_a_list @ tests_nested_dict(rbtree)
+ok 169 - obj_update_through_nondict @ tests_nested_dict(rbtree)
+ok 170 - obj_update_5_nested_matching @ tests_nested_dict(rbtree)
+ok 171 - obj_update_5_nested_not_matching @ tests_nested_dict(rbtree)
+  ---
+  coverage: 100.0%
+  ...
+
