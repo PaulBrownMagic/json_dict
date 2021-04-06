@@ -62,27 +62,34 @@
 		;	nonvar(JSON) ->
 			uninstantiation_error(JSON)
 		;	_Dict_::check(Dict),
-			dict_to_json_(Dict, JSON)
+			_Dict_::as_list(Dict, Pairs),
+			pairs_to_json(Pairs, JSON)
 		).
 
-	dict_to_json_(Value, Value) :-  % Both {} and [] are atomic
-		atomic(Value), \+ _Dict_::empty(Value), !.
-	dict_to_json_(Dict, {}) :-
-		_Dict_::empty(Dict), !.
-	dict_to_json_([DictHead|DictTail], [JSONHead|JSONTail]) :-
-		(	_Dict_::valid(DictHead)
-		->  dict_to_json_(DictHead, JSONHead)
-		;	JSONHead = DictHead
-		), !,
-		dict_to_json_(DictTail, JSONTail).
-	dict_to_json_(Dict, {JSON}) :-
-		_Dict_::as_list(Dict, [Pair| Pairs]),
+	pairs_to_json([], {}).
+	pairs_to_json([Pair| Pairs], {JSON}) :-
 		pairs_to_json(Pairs, Pair, JSON).
 
 	pairs_to_json([], Key-Value, Key-JSONValue) :-
-		dict_to_json_(Value, JSONValue).
-	pairs_to_json([Pair| Pairs], Key-Value, (Key-JSONValue, Rest)) :-
-		dict_to_json_(Value, JSONValue),
-		pairs_to_json(Pairs, Pair, Rest).
+		value_to_json_value(Value, JSONValue).
+	pairs_to_json([Pair| Pairs], Key-Value, (Key-JSONValue, JSONPairs)) :-
+		value_to_json_value(Value, JSONValue),
+		pairs_to_json(Pairs, Pair, JSONPairs).
+
+	value_to_json_value(Value, _) :-
+		var(Value),
+		instantiation_error.
+	value_to_json_value([], []) :-
+		!.
+	value_to_json_value([Dict| Dicts], [JSON| JSONs]) :-
+		!,
+		value_to_json_value(Dict, JSON),
+		value_to_json_value(Dicts, JSONs).
+	value_to_json_value(Value, Value) :-
+		\+ _Dict_::valid(Value),
+		!.
+	value_to_json_value(Value, JSON) :-
+		_Dict_::as_list(Value, Pairs),
+		pairs_to_json(Pairs, JSON).
 
 :- end_object.
