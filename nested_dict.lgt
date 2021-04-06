@@ -2,8 +2,8 @@
 
 	:- info([
 		version is 1:0:0,
-		author is 'Paul Brown',
-		date is 2021-04-05,
+		author is 'Paul Brown and Paulo Moura',
+		date is 2021-04-06,
 		comment is 'Nested dictionary predicates',
 		parameters is [
 			'Dictionary' - 'The dictionary implementation to use (must implement ``dictionaryp``).'

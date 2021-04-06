@@ -1,10 +1,11 @@
+
 :- object(tests_json_dict(_Dict_),
 	extends(lgtunit)).
 
 	:- info([
 		version is 1:0:0,
-		author is 'Paul Brown',
-		date is 2021-04-05,
+		author is 'Paul Brown and Paulo Moura',
+		date is 2021-04-06,
 		comment is 'Unit tests for json_dict'
 	]).
 

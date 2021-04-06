@@ -1,9 +1,10 @@
+
 :- object(json_dict(_Dict_)).
 
 	:- info([
 		version is 1:0:0,
-		author is 'Paul Brown',
-		date is 2021-04-05,
+		author is 'Paul Brown and Paulo Moura',
+		date is 2021-04-06,
 		comment is 'JSON objects and Nested Dictionaries translation',
 		parameters is [
 			'Dictionary' - 'The Dictionary implementation to use (must implement ``dictionaryp`` and extend ``term``).'
