@@ -59,10 +59,11 @@ jobs:
           mkdir -p docs
           cp coverage_report.html docs/
       - name: Publish code coverage report
-        uses: maxheld83/ghpages@v0.2.1
-        env:
-          BUILD_DIR: docs
-          GH_PAT: ${{ secrets.GH_PAT }}
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
+        with:
+          dir: docs
+          branch: gh-pages
+          token: ${{ secrets.GH_PAT }}
       - name: Generate the application documentation
         run: |
           swilgt -g "{loader,lgtdoc(loader)},lgtdoc::directory('.')" -t halt
