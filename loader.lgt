@@ -2,8 +2,7 @@
 :- initialization((
 	logtalk_load([
 		dictionaries(loader),
-		json(loader),
-		meta(loader)
+		json(loader)
 	]),
 	logtalk_load([
 		json_dict,

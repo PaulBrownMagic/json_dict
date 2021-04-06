@@ -5,7 +5,7 @@
 		version is 1:0:0,
 		author is 'Paul Brown and Paulo Moura',
 		date is 2021-04-06,
-		comment is 'JSON objects and Nested Dictionaries translation',
+		comment is 'Predicates for converting between JSON objects and nested dictionaries using a user-defined dictionary implementation.',
 		parameters is [
 			'Dictionary' - 'The Dictionary implementation to use (must implement ``dictionaryp`` and extend ``term``).'
 		]
@@ -30,15 +30,18 @@
 		;	type_error(json_object, JSON)
 		).
 
-	json_to_dict_(Value, Value) :-  % Both {} and [] are atomic
+	json_to_dict_(Value, Value) :-
+		% both {} and [] are atomic
 		atomic(Value), Value \== {}, !.
 	json_to_dict_({}, Dict) :-
 		_Dict_::new(Dict).
 	json_to_dict_({JSON}, Dict) :-
 		_Dict_::new(Empty),
 		pairs_to_dict(JSON, Empty, Dict).
-	json_to_dict_([H|T], Dict) :-
-		meta::map(json_to_dict_, [H|T], Dict).
+	json_to_dict_([], []).
+	json_to_dict_([Element| Elements], [Dict| Dicts]) :-
+		json_to_dict_(Element, Dict),
+		json_to_dict_(Elements, Dicts).
 
 	pairs_to_dict(Key-Value, Acc, Dict) :-
 		json_to_dict_(Value, DictValue),
