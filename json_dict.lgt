@@ -81,15 +81,15 @@
 		instantiation_error.
 	value_to_json_value([], []) :-
 		!.
-	value_to_json_value([Dict| Dicts], [JSON| JSONs]) :-
+	value_to_json_value([Value| Values], [JSONValue| JSONValues]) :-
 		!,
-		value_to_json_value(Dict, JSON),
-		value_to_json_value(Dicts, JSONs).
+		value_to_json_value(Value, JSONValue),
+		value_to_json_value(Values, JSONValues).
 	value_to_json_value(Value, Value) :-
 		\+ _Dict_::valid(Value),
 		!.
-	value_to_json_value(Value, JSON) :-
+	value_to_json_value(Value, JSONValue) :-
 		_Dict_::as_list(Value, Pairs),
-		pairs_to_json(Pairs, JSON).
+		pairs_to_json(Pairs, JSONValue).
 
 :- end_object.
