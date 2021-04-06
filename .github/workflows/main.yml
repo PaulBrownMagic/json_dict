@@ -48,14 +48,16 @@ jobs:
         with:
           name: code-coverage-report
           path: coverage_report.html
-      - name: Copy code coverage report
+      - name: Make code coverage report and tap-report public
         run: |
-          mkdir -p docs
-          cp coverage_report.html docs/
-      - name: Publish code coverage report
+          mkdir -p public
+          cp coverage_report.html public/
+          cp tap_report.txt public/
+          cp README.md public/
+      - name: Publish public reports
         uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
         with:
-          dir: docs
+          dir: public
           branch: gh-pages
           token: ${{ secrets.GH_PAT }}
       - name: Generate the application documentation
