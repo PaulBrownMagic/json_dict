@@ -28,6 +28,7 @@
 			json_to_dict_(JSON, Dict)
 		;	type_error(json_object, JSON)
 		).
+
 	json_to_dict_(Value, Value) :-  % Both {} and [] are atomic
 		atomic(Value), Value \== {}, !.
 	json_to_dict_({}, Dict) :-
@@ -41,7 +42,7 @@
 	pairs_to_dict(Key-Value, Acc, Dict) :-
 		json_to_dict_(Value, DictValue),
 		_Dict_::insert(Acc, Key, DictValue, Dict).
-	pairs_to_dict(','(Key-Value, Pairs), Acc, Dict) :-
+	pairs_to_dict((Key-Value, Pairs), Acc, Dict) :-
 		json_to_dict_(Value, DictValue),
 		_Dict_::insert(Acc, Key, DictValue, Updated),
 		pairs_to_dict(Pairs, Updated, Dict).
