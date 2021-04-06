@@ -8,11 +8,7 @@ ok 5 - json_to_dict_nonvar_error @ tests_json_dict(avltree)
 ok 6 - dict_to_json_nonvar_error @ tests_json_dict(avltree)
 ok 7 - json_dict_empty_forwards @ tests_json_dict(avltree)
 ok 8 - json_dict_empty_list_forwards @ tests_json_dict(avltree)
-not ok 9 - json_dict_empty_backwards @ tests_json_dict(avltree)
-  ---
-  message: "test goal throws an error but should have succeeded"
-  got: error(type_error(compound,t),logtalk(check(t),c(compound,compound,r(json_dict(avltree),avltree,[],[]))))
-  ...
+ok 9 - json_dict_empty_backwards @ tests_json_dict(avltree)
 ok 10 - json_dict_empty_list_backwards @ tests_json_dict(avltree)
 ok 11 - forwards_only_one_pair @ tests_json_dict(avltree)
 ok 12 - forwards_two_pair @ tests_json_dict(avltree)
@@ -42,11 +38,7 @@ ok 34 - json_to_dict_nonvar_error @ tests_json_dict(bintree)
 ok 35 - dict_to_json_nonvar_error @ tests_json_dict(bintree)
 ok 36 - json_dict_empty_forwards @ tests_json_dict(bintree)
 ok 37 - json_dict_empty_list_forwards @ tests_json_dict(bintree)
-not ok 38 - json_dict_empty_backwards @ tests_json_dict(bintree)
-  ---
-  message: "test goal throws an error but should have succeeded"
-  got: error(type_error(compound,t),logtalk(check(t),c(compound,compound,r(json_dict(bintree),bintree,[],[]))))
-  ...
+ok 38 - json_dict_empty_backwards @ tests_json_dict(bintree)
 ok 39 - json_dict_empty_list_backwards @ tests_json_dict(bintree)
 ok 40 - forwards_only_one_pair @ tests_json_dict(bintree)
 ok 41 - forwards_two_pair @ tests_json_dict(bintree)
@@ -76,61 +68,27 @@ ok 63 - json_to_dict_nonvar_error @ tests_json_dict(rbtree)
 ok 64 - dict_to_json_nonvar_error @ tests_json_dict(rbtree)
 ok 65 - json_dict_empty_forwards @ tests_json_dict(rbtree)
 ok 66 - json_dict_empty_list_forwards @ tests_json_dict(rbtree)
-not ok 67 - json_dict_empty_backwards @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
+ok 67 - json_dict_empty_backwards @ tests_json_dict(rbtree)
 ok 68 - json_dict_empty_list_backwards @ tests_json_dict(rbtree)
 ok 69 - forwards_only_one_pair @ tests_json_dict(rbtree)
 ok 70 - forwards_two_pair @ tests_json_dict(rbtree)
 ok 71 - forwards_three_pair @ tests_json_dict(rbtree)
-not ok 72 - backwards_only_one_pair @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 73 - backwards_two_pair @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 74 - backwards_three_pairs @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
+ok 72 - backwards_only_one_pair @ tests_json_dict(rbtree)
+ok 73 - backwards_two_pair @ tests_json_dict(rbtree)
+ok 74 - backwards_three_pairs @ tests_json_dict(rbtree)
 ok 75 - forwards_contains_empty_list @ tests_json_dict(rbtree)
 ok 76 - forwards_contains_list @ tests_json_dict(rbtree)
 ok 77 - forwards_contains_empty_object @ tests_json_dict(rbtree)
 ok 78 - forwards_contains_object @ tests_json_dict(rbtree)
 ok 79 - forwards_contains_list_of_objects @ tests_json_dict(rbtree)
 ok 80 - forwards_deeply_nested @ tests_json_dict(rbtree)
-not ok 81 - backwards_dict_contains_var_value @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have throw an error"
-  expected: error(instantiation_error,A)
-  ...
-not ok 82 - backwards_contains_empty_list @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 83 - backwards_contains_list @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 84 - backwards_contains_empty_object @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 85 - backwards_contains_object @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 86 - backwards_contains_list_of_objects @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
-not ok 87 - backwards_deeply_nested @ tests_json_dict(rbtree)
-  ---
-  message: "test goal failed but should have succeeded"
-  ...
+ok 81 - backwards_dict_contains_var_value @ tests_json_dict(rbtree)
+ok 82 - backwards_contains_empty_list @ tests_json_dict(rbtree)
+ok 83 - backwards_contains_list @ tests_json_dict(rbtree)
+ok 84 - backwards_contains_empty_object @ tests_json_dict(rbtree)
+ok 85 - backwards_contains_object @ tests_json_dict(rbtree)
+ok 86 - backwards_contains_list_of_objects @ tests_json_dict(rbtree)
+ok 87 - backwards_deeply_nested @ tests_json_dict(rbtree)
 1..28
 ok 88 - lookup_in_empty_reflexive @ tests_nested_dict(avltree)
 ok 89 - lookup_depth_one @ tests_nested_dict(avltree)
