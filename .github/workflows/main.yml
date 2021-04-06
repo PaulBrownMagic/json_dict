@@ -61,7 +61,7 @@ jobs:
       - name: Publish code coverage report
         uses: maxheld83/ghpages@v0.2.1
         env:
-          BUILD_DIR: public
+          BUILD_DIR: docs
           GH_PAT: ${{ secrets.GH_PAT }}
       - name: Generate the application documentation
         run: |
