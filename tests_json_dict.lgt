@@ -91,6 +91,9 @@
 		meta::map(json_dict(_Dict_)::json_to_dict, [{a-b}, {c-[{d-[1, 2, {}]}, {f-{g-h}}]}], Dict),
 		Dict = [D1, D2].
 
+	test(backwards_dict_contains_var_value, error(instantiation_error)) :-
+		_Dict_::as_dictionary([a-b, c-d, var-_F], Dict),
+		json_dict(_Dict_)::dict_to_json(Dict, _Json).
 	test(backwards_contains_empty_list, deterministic(JSON == {a-[]})) :-
 		_Dict_::as_dictionary([a-[]], D),
 		json_dict(_Dict_)::dict_to_json(D, JSON).
