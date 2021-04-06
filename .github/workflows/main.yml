@@ -34,12 +34,6 @@ jobs:
         uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - name: Checkout application dependencies
-        uses: actions/checkout@v1
-        with:
-          repository: PaulBrownMagic/json_dict
-          ref: refs/heads/master
-          fetch-depth: 1
       - name: Run the application tests
         run: |
           logtalk_tester -f tap -c xml || true
