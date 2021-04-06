@@ -38,7 +38,6 @@
 	json_to_dict_({JSON}, Dict) :-
 		_Dict_::new(Empty),
 		pairs_to_dict(JSON, Empty, Dict).
-	json_to_dict_([], []).
 	json_to_dict_([Element| Elements], [Dict| Dicts]) :-
 		json_to_dict_(Element, Dict),
 		json_to_dict_(Elements, Dicts).
