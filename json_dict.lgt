@@ -94,3 +94,16 @@
 		pairs_to_json(Pairs, JSONValue).
 
 :- end_object.
+
+
+:- object(json_dict,
+	extends(json_dict(avltree))).
+
+	:- info([
+		version is 1:0:0,
+		author is 'Paul Brown and Paulo Moura',
+		date is 2021-04-06,
+		comment is 'Predicates for converting between JSON objects and nested dictionaries using an AVL tree dictionary implementation.'
+	]).
+
+:- end_object.
