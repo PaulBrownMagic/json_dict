@@ -7,5 +7,7 @@
 	logtalk_load([
 		json_dict,
 		nested_dict
+	], [
+		optimize(on)
 	])
 )).
