@@ -56,8 +56,8 @@ jobs:
           path: coverage_report.html
       - name: Copy code coverage report
         run: |
-          mkdir -p public
-          cp coverage_report.html public/
+          mkdir -p docs
+          cp coverage_report.html docs/
       - name: Publish code coverage report
         uses: maxheld83/ghpages@v0.2.1
         env:
