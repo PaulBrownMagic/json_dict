@@ -1,12 +1,10 @@
 :- initialization((
 	set_logtalk_flag(report, warnings),
-	set_logtalk_flag(complements, restrict),
 	logtalk_load([
 		dictionaries(loader),
 		json(loader),
 		meta(loader)
 	]),
-	logtalk_load(lgtunit(loader)),
 	logtalk_load([
 		json_dict,
 		nested_dict
@@ -14,6 +12,8 @@
 		source_data(on),
 		debug(on)
 	]),
+	logtalk_load(basic_types(loader)),
+	logtalk_load(lgtunit(loader)),
 	logtalk_load([
 		tests_json_dict,
 		tests_nested_dict
